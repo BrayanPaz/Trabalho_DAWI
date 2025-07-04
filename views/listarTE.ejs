@@ -1,0 +1,66 @@
+<!-- FILE: listarTE.ejs -->
+<!DOCTYPE html>
+<html lang="pt-br" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Treinos e Equipamentos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="/"><i class="bi bi-barbell"></i> GymManager</a>
+        </div>
+    </nav>
+    <main class="container mt-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="h2">Relação Treino x Equipamento</h1>
+            <a href="/TE" class="btn btn-warning"><i class="bi bi-plus-circle-fill me-1"></i> Nova Relação</a>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-dark table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">ID Relação</th>
+                        <th scope="col">Cód. Treino</th>
+                        <th scope="col">Cód. Equipamento</th>
+                        <th scope="col">Séries</th>
+                        <th scope="col" class="text-end">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% TE.forEach(function(te){ %>
+                        <tr>
+                            <td>
+                                <%= te._id %>
+                            </td>
+                            <td>
+                                <%= te.Trecodigo %>
+                            </td>
+                            <td>
+                                <%= te.Equcodigo %>
+                            </td>
+                            <td>
+                                <%= te.Series %>
+                            </td>
+                            <td class="text-end">
+                                <a href="/edtTE/<%= TE._id %>" class="btn btn-sm btn-outline-warning me-2"><i
+                                        class="bi bi-pencil-square"></i> Editar</a>
+                                <a href="/dltTE/<%= TE._id %>" class="btn btn-sm btn-outline-danger"><i
+                                        class="bi bi-trash-fill"></i> Deletar</a>
+                            </td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
